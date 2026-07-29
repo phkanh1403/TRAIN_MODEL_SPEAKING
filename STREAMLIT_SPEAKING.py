@@ -44,6 +44,7 @@ with tab2:
     id_fix = str(int(id_fix))+"."+str(int(id_cluster_fix))+"."+str(int(part_fix))
 
     st.subheader("NHẬP DỮ LIỆU CẦN SỬA")
+    part_fix_new = st.number_input("Nhập phần sửa lại")
     question_fix = st.text_area("Nhập câu hỏi sửa")
     answer_fix = st.text_area("Nhập câu trả lời sửa")
     context_fix = st.text_input("Nhập chủ đề sửa")
@@ -54,8 +55,9 @@ with tab2:
         df.loc[mask, "ANSWER"] = answer_fix
         df.loc[mask, "CONTEXT"] = context_fix
         df.loc[mask, "SCORE"] = score_fix
+        df.loc[mask, "CONTEXT_CLUSTER"] = part_fix_new
         df.to_csv(
-            r"C:\Users\PHAM HOANG KIM ANH\Downloads\SPEAKING_DATASET.csv",index=False,encoding="utf-8-sig")
+            r"D:\TRAIN_MODEL_SPEAKING\SPEAKING_DATASET.csv",index=False,encoding="utf-8-sig")
         st.write("Đã sửa")
         st.dataframe(df[mask])
 
